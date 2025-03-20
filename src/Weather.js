@@ -27,28 +27,29 @@ export default function Weather() {
   }
 
   return (
-    <div className="Weather">
+    <div className="forecast-container">
       <form className="search_form" onSubmit={handleSubmit}>
         <input
           type="text"
           name="searchBox"
           id="search_input"
+          placeholder="Enter a city name..."
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
-        <input type="submit" value="Search" />
+        <input type="submit" value="Search" id="search-button" />
       </form>
 
       {weatherData && (
-        <ul className="forecast">
-          <li>Temperature: {Math.round(weatherData.temp)}°C</li>
-          <li>Description: {weatherData.description}</li>
-          <li>Humidity: {weatherData.humidity}%</li>
-          <li>Wind: {Math.round(weatherData.wind)}km/h</li>
-          <li>
+        <div className="city-forecast">
+          <p>Temperature: {Math.round(weatherData.temp)}°C</p>
+          <p>Description: {weatherData.description}</p>
+          <p>Humidity: {weatherData.humidity}%</p>
+          <p>Wind: {Math.round(weatherData.wind)}km/h</p>
+          <p>
             <img src={weatherData.icon} alt={weatherData.description} />
-          </li>
-        </ul>
+          </p>
+        </div>
       )}
     </div>
   );
