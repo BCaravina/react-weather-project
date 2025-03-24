@@ -5,6 +5,7 @@ import "./Weather.css";
 export default function Weather() {
   const [city, setCity] = useState("São Paulo");
   const [weatherData, setWeatherData] = useState(null);
+  // eslint-disable-next-line
   const [loading, setLoading] = useState(false);
 
   // Function to fetch weather data
@@ -35,7 +36,7 @@ export default function Weather() {
   // Initial data fetch on component mount
   useEffect(() => {
     fetchWeatherData(city);
-  }, []);
+  });
 
   function handleSubmit(event) {
     event.preventDefault();
