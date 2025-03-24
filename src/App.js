@@ -1,5 +1,6 @@
-import "./App.css";
+import React from "react";
 import Weather from "./Weather.js";
+import "./App.css";
 
 function App() {
   return (
@@ -9,10 +10,23 @@ function App() {
       </header>
       <footer>
         <p>
-          <a href="https://github.com/BCaravina/react-weather-project">
-            Open-source
+          This project was coded by{" "}
+          <a
+            href="https://github.com/BCaravina/react-weather-project"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {" "}
+            BCaravina
+          </a>{" "}
+          and{" "}
+          <a
+            href="https://react-made-weather-forecast.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            is open-sourced
           </a>
-          code by <a href="https://github.com/BCaravina">BCaravina</a>
         </p>
       </footer>
     </div>

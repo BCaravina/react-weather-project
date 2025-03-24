@@ -97,27 +97,6 @@ export default function Weather() {
             </div>
           </div>
         )}
-
-        <div className="footer">
-          <p>
-            This project was coded by{" "}
-            <a
-              href="https://github.com/BCaravina/react-weather-project"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              BCaravina
-            </a>{" "}
-            and{" "}
-            <a
-              href="https://react-made-weather-forecast.netlify.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              is open-sourced
-            </a>
-          </p>
-        </div>
       </div>
     </div>
   );
