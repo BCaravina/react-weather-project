@@ -5,12 +5,11 @@ import "./Weather.css";
 export default function Weather() {
   const [city, setCity] = useState("São Paulo");
   const [weatherData, setWeatherData] = useState(null);
-  // eslint-disable-next-line
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   // Function to fetch weather data
   const fetchWeatherData = async (cityName) => {
-    setLoading(true);
+    // setLoading(true);
     try {
       const apiKey = "c49ed490tce5aa3a51c741aaobee84ef";
       const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${cityName}&key=${apiKey}&units=metric`;
@@ -28,9 +27,10 @@ export default function Weather() {
       });
     } catch (error) {
       console.error("Error fetching weather data:", error);
-    } finally {
-      setLoading(false);
     }
+    // finally {
+    //   setLoading(false);
+    // }
   };
 
   // Initial data fetch on component mount
