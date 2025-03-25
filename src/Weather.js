@@ -56,7 +56,7 @@ export default function Weather() {
             value={city}
             onChange={(e) => setCity(e.target.value)}
           />
-          <button type="submit" className="search-button">
+          <button type="submit" className="search-button btn-primary">
             Search
           </button>
         </form>
