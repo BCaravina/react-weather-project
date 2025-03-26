@@ -1,34 +1,24 @@
 .App {
-  text-align: center;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-footer {
-  margin-top: 30px;
+.App footer {
   text-align: center;
-  font-size: 14px;
+  margin-top: 10px;
+  font-size: 11px;
   color: #777;
 }
 
-footer a {
+.App footer a {
   color: #4a90e2;
   text-decoration: none;
 }
 
-footer a:hover {
+.App footer a:hover {
   text-decoration: underline;
 }

@@ -1,33 +1,63 @@
-/* body {
+.Weather {
+  font-family: Arial, Helvetica, sans-serif;
+  border: 1px solid #dadde1;
+  border-radius: 4px;
+  padding: 16px;
+  margin: 60px 0 0 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  color: rgb(135, 135, 135);
+  /* background-color: rgb(211, 208, 208); */
   background-color: white;
-  font-family: Arial, sans-serif;
+  width: 100%;
+}
+
+.Weather h1 {
+  font-size: 24px;
+  font-weight: 100;
+  line-height: 29px;
+  margin: 20px 0 0 0;
+}
+
+.Weather ul {
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
-.weather-app {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 20px;
+.Weather li {
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 22px;
 }
 
-.weather-container {
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  width: 100%;
-  max-width: 600px;
+.Weather .weather-icon {
+  height: 120px;
+  width: 120px;
+  padding: 0;
+  margin: 0;
 }
 
-.search-form {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 30px;
+.Weather .temperature {
+  color: rgb(32, 33, 36);
+  font-family: Arial, sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 64px;
 }
 
+.Weather .temperature-unit {
+  color: rgb(32, 33, 36);
+  display: inline-block;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: relative;
+  top: -25px;
+  padding-left: 3px;
+  /* margin-top: 10px; */
+}
+
+/*
 .search-input {
   flex: 1;
   padding: 12px 15px;
@@ -47,53 +77,4 @@
   transition: background-color 0.3s;
 }
 
-.search-button:hover {
-  background-color: #357aca;
-}
-
-.current-weather {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.weather-details h1 {
-  margin: 0 0 10px 0;
-  font-size: 32px;
-  color: #333;
-}
-
-.weather-time,
-.weather-stats {
-  margin: 5px 0;
-  color: #666;
-}
-
-.humidity {
-  color: #4a90e2;
-  font-weight: bold;
-}
-
-.temperature-display {
-  display: flex;
-  align-items: center;
-}
-
-.weather-icon {
-  width: 60px;
-  height: 60px;
-}
-
-.temperature {
-  font-size: 42px;
-  font-weight: bold;
-  color: #4a90e2;
-  margin: 0 5px;
-}
-
-.temperature-unit {
-  font-size: 20px;
-  position: relative;
-  color: #4a90e2;
-  top: -15px;
-} */
+ */

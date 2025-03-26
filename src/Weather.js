@@ -46,49 +46,45 @@ export default function Weather() {
   }
 
   return (
-    <div className="Weather weather-app">
-      <div className="weather-container border p-4">
-        <form className="search-form" onSubmit={handleSubmit}>
-          <div className="row">
-            <div className="col-9">
-              <input
-                type="text"
-                placeholder="Enter a city.."
-                className="search-input form-control"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-              />
-            </div>
-            <div className="col-3">
-              <button type="submit" className="search-button btn btn-primary">
-                Search
-              </button>
-            </div>
+    <div className="Weather">
+      <form onSubmit={handleSubmit}>
+        <div className="row">
+          <div className="col-9">
+            <input
+              type="text"
+              placeholder="Enter a city.."
+              autoFocus="on"
+              className="search-input form-control"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            />
           </div>
-        </form>
+          <div className="col-3">
+            <button type="submit" className="btn btn-primary w-100">
+              Search
+            </button>
+          </div>
+        </div>
+      </form>
 
-        {weatherData && (
-          <div className="current-weather">
-            <h1>{weatherData.city}</h1>
-            <div className="weather-details">
-              <p className="weather-time">
-                {weatherData.time.toLocaleDateString("en-US", {
-                  weekday: "long",
-                })}{" "}
-                {weatherData.time.toLocaleTimeString("en-US", {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                  hour12: false,
-                })}
-                , {weatherData.description}
-              </p>
-              <p className="weather-stats">
-                Humidity:{" "}
-                <span className="humidity">{weatherData.humidity}%</span>, Wind:{" "}
-                {weatherData.wind.toFixed(2)}km/h
-              </p>
-            </div>
-            <div className="temperature-display">
+      {weatherData && (
+        <div className="current-weather">
+          <h1>{weatherData.city}</h1>
+          <ul>
+            <li className="weather-time">
+              {weatherData.time.toLocaleDateString("en-US", {
+                weekday: "long",
+              })}{" "}
+              {weatherData.time.toLocaleTimeString("en-US", {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false,
+              })}
+            </li>
+            <li>{weatherData.description}</li>
+          </ul>
+          <div className="row">
+            <div className="col-6">
               <img
                 src={weatherData.icon}
                 alt={weatherData.description}
@@ -99,9 +95,18 @@ export default function Weather() {
               </span>
               <span className="temperature-unit">°C</span>
             </div>
+            <div className="col-6">
+              <ul>
+                <li>Precipitation: 15%</li>
+                <li>
+                  Humidity: <span>{weatherData.humidity}%</span>
+                </li>
+                <li>Wind: {weatherData.wind.toFixed(2)}km/h</li>
+              </ul>
+            </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
