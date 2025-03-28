@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import TemperatureConversion from "./TemperatureConversion";
 import axios from "axios";
 import "./Weather.css";
 
@@ -17,10 +18,7 @@ export default function Weather() {
       setWeatherData({
         city: response.data.city,
         temp: response.data.temperature.current,
-        description: response.data.condition.description.replace(
-          /\b\w/,
-          (char) => char.toUpperCase()
-        ),
+        description: response.data.condition.description,
         humidity: response.data.temperature.humidity,
         wind: response.data.wind.speed,
         icon: response.data.condition.icon_url,
@@ -85,7 +83,7 @@ export default function Weather() {
                   })}`
                 : "Loading time..."}
             </li>
-            <li>{weatherData.description}</li>
+            <li className="text-capitalize">{weatherData.description}</li>
           </ul>
           <div className="row">
             <div className="col-6">
@@ -94,14 +92,10 @@ export default function Weather() {
                 alt={weatherData.description}
                 className="weather-icon"
               />
-              <span className="temperature">
-                {Math.round(weatherData.temp)}
-              </span>
-              <span className="temperature-unit">°C</span>
+              <TemperatureConversion celsius={weatherData.temp} />
             </div>
             <div className="col-6">
               <ul>
-                <li>Precipitation: 15%</li>
                 <li>
                   Humidity: <span>{weatherData.humidity}%</span>
                 </li>
