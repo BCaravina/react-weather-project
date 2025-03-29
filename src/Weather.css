@@ -30,28 +30,8 @@
 }
 
 .Weather .weather-icon {
-  height: 120px;
-  width: 120px;
+  height: 110px;
+  width: 110px;
   padding: 0;
   margin: 0;
-}
-
-.Weather .temperature {
-  color: rgb(32, 33, 36);
-  font-family: Arial, sans-serif;
-  font-size: 48px;
-  font-weight: 400;
-  line-height: 64px;
-}
-
-.Weather .temperature-unit {
-  color: rgb(32, 33, 36);
-  display: inline-block;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  position: relative;
-  top: -25px;
-  padding-left: 3px;
-  /* margin-top: 10px; */
 }

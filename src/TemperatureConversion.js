@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./TemperatureConversion.css";
 
 export default function TemperatureConversion({ celsius }) {
   const [unit, setUnit] = useState("C");
@@ -17,16 +18,16 @@ export default function TemperatureConversion({ celsius }) {
   }
 
   return (
-    <span className="temperature-conversion temperature">
-      <strong>{Math.round(temperature)}</strong>
+    <span className="TemperatureConversion">
+      <span className="temperature">{Math.round(temperature)}</span>
       <span className="temperature-unit">
         °{unit} |
         {unit === "C" ? (
-          <a href="/" onClick={convertToFahrenheit}>
+          <a href="/" onClick={convertToFahrenheit} className="unit-link">
             °F
           </a>
         ) : (
-          <a href="/" onClick={convertToCelsius}>
+          <a href="/" onClick={convertToCelsius} className="unit-link">
             °C
           </a>
         )}
