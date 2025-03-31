@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import TemperatureConversion from "./TemperatureConversion";
+import Forecast from "./Forecast";
+import WeatherDetails from "./WeatherDetails";
+import SearchForm from "./SearchForm";
+import FormattedTime from "./FormattedTime";
 import axios from "axios";
 import "./Weather.css";
 
 export default function Weather() {
-  const [ready, setReady] = useState("");
+  const [ready, setReady] = useState(false);
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState(null);
 
@@ -22,7 +26,6 @@ export default function Weather() {
         humidity: response.data.temperature.humidity,
         wind: response.data.wind.speed,
         icon: response.data.condition.icon_url,
-        time: new Date(response.data.time * 1000),
       });
       setReady(true);
     } catch (error) {
@@ -43,47 +46,25 @@ export default function Weather() {
     }
   }
 
+  function handleSearch(city) {
+    fetchWeatherData(city);
+  }
+
   if (!ready || !weatherData) {
     return <div>Loading..</div>;
   }
+
   return (
     <div className="Weather">
-      <form onSubmit={handleSubmit}>
-        <div className="row">
-          <div className="col-9">
-            <input
-              type="text"
-              placeholder="Enter a city.."
-              autoFocus="on"
-              className="search-input form-control"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-            />
-          </div>
-          <div className="col-3">
-            <button type="submit" className="btn btn-primary w-100">
-              Search
-            </button>
-          </div>
-        </div>
-      </form>
-
+      <SearchForm onSearch={handleSearch} />
       {weatherData && (
         <div className="current-weather">
           <h1>{weatherData.city}</h1>
           <ul>
-            <li className="weather-time">
-              {weatherData.time
-                ? `${weatherData.time.toLocaleDateString("en-US", {
-                    weekday: "long",
-                  })} ${weatherData.time.toLocaleTimeString("en-US", {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    hour12: false,
-                  })}`
-                : "Loading time..."}
-            </li>
-            <li className="text-capitalize">{weatherData.description}</li>
+            <FormattedTime
+              timestamp={weatherData.time}
+              description={weatherData.description}
+            />
           </ul>
           <div className="row">
             <div className="col-6">
@@ -95,16 +76,17 @@ export default function Weather() {
               <TemperatureConversion celsius={weatherData.temp} />
             </div>
             <div className="col-6">
-              <ul>
-                <li>
-                  Humidity: <span>{weatherData.humidity}%</span>
-                </li>
-                <li>Wind: {weatherData.wind.toFixed(2)}km/h</li>
-              </ul>
+              <WeatherDetails
+                humidity={weatherData.humidity}
+                wind={weatherData.wind}
+              />
             </div>
           </div>
         </div>
       )}
+      <div className="weather-forecast">
+        <Forecast />
+      </div>
     </div>
   );
 }
