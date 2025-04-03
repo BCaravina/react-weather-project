@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./TemperatureConversion.css";
 
-export default function TemperatureConversion({ celsius }) {
-  const [unit, setUnit] = useState("C");
-
+export default function TemperatureConversion({ celsius, unit, setUnit }) {
   function convertToFahrenheit(event) {
     event.preventDefault();
     setUnit("F");

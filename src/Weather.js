@@ -11,6 +11,7 @@ export default function Weather() {
   const [ready, setReady] = useState(false);
   const [city, setCity] = useState("São Paulo");
   const [weatherData, setWeatherData] = useState(null);
+  const [unit, setUnit] = useState("C");
 
   // Function to fetch weather data
   const fetchWeatherData = async (cityName) => {
@@ -68,9 +69,13 @@ export default function Weather() {
                 alt={weatherData.description}
                 className="weather-icon"
               />
-              <TemperatureConversion celsius={weatherData.temp} />
+              <TemperatureConversion
+                celsius={weatherData.temp}
+                unit={unit}
+                setUnit={setUnit}
+              />
             </div>
-            <div className="col-6">
+            <div className="col-6 weather-details">
               <WeatherDetails
                 humidity={weatherData.humidity}
                 wind={weatherData.wind}
@@ -81,7 +86,7 @@ export default function Weather() {
         </div>
       )}
       <div className="weather-forecast">
-        <Forecast city={city} />
+        <Forecast city={city} unit={unit} />
       </div>
     </div>
   );

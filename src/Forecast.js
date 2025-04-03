@@ -3,7 +3,7 @@ import axios from "axios";
 import FormattedWeekday from "./FormattedWeekday";
 import "./Forecast.css";
 
-export default function Forecast({ city }) {
+export default function Forecast({ city, unit }) {
   const [forecastData, setForecastData] = useState(null);
 
   useEffect(() => {
@@ -21,6 +21,10 @@ export default function Forecast({ city }) {
     return <div>Loading forecast...</div>;
   }
 
+  function convertTemp(temp) {
+    return unit === "C" ? temp : (temp * 9) / 5 + 32;
+  }
+
   return (
     <div className="forecast-container d-flex justify-content-between">
       {forecastData.slice(1, 6).map((day, index) => (
@@ -29,15 +33,15 @@ export default function Forecast({ city }) {
           <img
             src={day.condition.icon_url}
             alt={day.condition.description}
-            className="weather-icon"
+            className="forecast-icon"
           />
           <div className="weather-description">{day.condition.description}</div>
           <div className="temperature-range">
             <span className="temp-min">
-              {Math.round(day.temperature.minimum)}°C
+              {Math.round(convertTemp(day.temperature.minimum))}°
             </span>
             <span className="temp-max">
-              {Math.round(day.temperature.maximum)}°C
+              {Math.round(convertTemp(day.temperature.maximum))}°
             </span>
           </div>
         </div>

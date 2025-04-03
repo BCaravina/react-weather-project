@@ -12,7 +12,7 @@ export default function SearchForm({ onSearch }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="mt-3">
       <div className="row">
         <div className="col-9">
           <input
