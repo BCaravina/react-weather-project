@@ -9,16 +9,22 @@ import "./Weather.css";
 
 export default function Weather() {
   const [ready, setReady] = useState(false);
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState("São Paulo");
   const [weatherData, setWeatherData] = useState(null);
 
   // Function to fetch weather data
   const fetchWeatherData = async (cityName) => {
     try {
+      console.log("Fetching weather for:", cityName);
       const apiKey = "c49ed490tce5aa3a51c741aaobee84ef";
       const apiUrl = `https://api.shecodes.io/weather/v1/current?query=${cityName}&key=${apiKey}&units=metric`;
 
       const response = await axios.get(apiUrl);
+
+      if (!response.data || !response.data.city) {
+        throw new Error("Invalid response from API");
+      }
+
       setWeatherData({
         city: response.data.city,
         temp: response.data.temperature.current,
@@ -33,21 +39,13 @@ export default function Weather() {
     }
   };
 
-  // Fetch default city data on first load
+  // Fetch default city data on first load + whenever city changes
   useEffect(() => {
-    fetchWeatherData("São Paulo");
-  }, []); // Empty dependency array ensures this only runs once
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    setReady(true);
-    if (city) {
-      fetchWeatherData(city);
-    }
-  }
-
-  function handleSearch(city) {
     fetchWeatherData(city);
+  }, [city]);
+
+  function handleSearch(newCity) {
+    setCity(newCity);
   }
 
   if (!ready || !weatherData) {
@@ -61,10 +59,7 @@ export default function Weather() {
         <div className="current-weather">
           <h1>{weatherData.city}</h1>
           <ul>
-            <FormattedTime
-              timestamp={weatherData.time}
-              description={weatherData.description}
-            />
+            <FormattedTime description={weatherData.description} />
           </ul>
           <div className="row">
             <div className="col-6">
@@ -85,7 +80,7 @@ export default function Weather() {
         </div>
       )}
       <div className="weather-forecast">
-        <Forecast />
+        <Forecast city={city} />
       </div>
     </div>
   );

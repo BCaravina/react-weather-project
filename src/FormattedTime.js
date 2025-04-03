@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function FormattedTime({ timestamp, description }) {
+export default function FormattedTime({ description }) {
   const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
   const formattedTime = new Date().toLocaleString(undefined, {
