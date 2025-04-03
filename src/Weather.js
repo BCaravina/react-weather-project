@@ -76,6 +76,7 @@ export default function Weather() {
                 wind={weatherData.wind}
               />
             </div>
+            <div className="border-line"></div>
           </div>
         </div>
       )}

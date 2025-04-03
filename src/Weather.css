@@ -35,3 +35,9 @@
   padding: 0;
   margin: 0;
 }
+
+.Weather .border-line {
+  margin: 10px auto;
+  border: 0.5px solid rgb(135, 135, 135, 0.3);
+  width: 90%;
+}

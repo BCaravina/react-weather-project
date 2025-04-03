@@ -1,12 +1,14 @@
-.Forecast {
+.forecast-container {
   text-align: center;
+  line-height: 1.5;
+  margin-top: 20px;
 }
 
-.Forecast-temperature-min {
+.temp-min {
   opacity: 0.7;
   margin-right: 5px;
 }
 
-.Forecast .weather-icon {
-  size: 20px;
+.weather-description {
+  font-size: 15px;
 }
